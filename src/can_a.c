@@ -14,11 +14,11 @@
 
 
 //***************************************************
-// º¯ÊýÃû: WriteCanA
-// ¹¦ÄÜ: ÍùCAN AÉÏ·¢ËÍÒ»ÌõÏûÏ¢
-// Èë²Î: ÎÞ
-// ³ö²Î: ÎÞ
-// ·µ»ØÖµ: ÎÞ
+// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½: WriteCanA
+// ï¿½ï¿½ï¿½ï¿½: ï¿½ï¿½CAN Aï¿½Ï·ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ï¢
+// ï¿½ï¿½ï¿½: ï¿½ï¿½
+// ï¿½ï¿½ï¿½ï¿½: ï¿½ï¿½
+// ï¿½ï¿½ï¿½ï¿½Öµ: ï¿½ï¿½
 //***************************************************
 void WriteCanA (void)
 {
@@ -52,12 +52,17 @@ void WriteCanA (void)
 }
 
 //***************************************************
-// º¯ÊýÃû: ReadCanA
-// ´¦ÀíCAN AÉÏµÄÒ»ÌõÏûÏ¢
-// ÎÞ
-// ³ö²Î: ÎÞ
-// ·µ»ØÖµ: ÎÞ
+// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½: ReadCanA
+// ï¿½ï¿½ï¿½ï¿½CAN Aï¿½Ïµï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ï¢
+// ï¿½ï¿½
+// ï¿½ï¿½ï¿½ï¿½: ï¿½ï¿½
+// ï¿½ï¿½ï¿½ï¿½Öµ: ï¿½ï¿½
 //***************************************************
+
+extern DWORD Nudging_timer_count;
+extern BYTE  NudingMode;
+extern DWORD Nudging_Buz_timer_count;
+extern DWORD Nudging_opendoor_timer_count;
 void ReadCanA (void)
 {
 	WORD wordvalue;
@@ -98,6 +103,17 @@ void ReadCanA (void)
 				case (1):									// door state door 1
 				case (2):									// door state door 2
 				case (3):									// door state door 3
+
+					if((door_state[0] == DOOR_CLOSED) && (NudingMode))
+					{
+						Nudging_Buz_timer_count = 0-1;
+						NudingMode = 0;
+						set_out (DOOR_IO, DOOR_REV, 0, EXISTING_DOORS,0 , O_CANA); 
+						set_out (SPEAKER_BUZ, BUZZER_FIRE, 0, EXISTING_DOORS, 0 , O_CANA); 
+						Nudging_opendoor_timer_count = timer + 5 SEC;
+					}
+
+
 					door_state [id - 1] = *(WORD *)&rxa [roa][2];		// read door state
 					if (door_state [id - 1] == DOOR_CLOSED)	// door is closed
 					{
@@ -173,7 +189,7 @@ void ReadCanA (void)
 					break;
 			}
 			if ((wordvalue) && (wordvalue != E_DOOR_SC_1) && (wordvalue != E_DOOR_SC_2) && (id != DSE_ID))
-				{//ÊÖ³Ö²Ù×÷Æ÷µÄ¹ÊÕÏ²»ÔÚ¼ÇÂ¼
+				{//ï¿½Ö³Ö²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¹ï¿½ï¿½Ï²ï¿½ï¿½Ú¼ï¿½Â¼
 					if((wordvalue != E_DOOR_REV_1) && (wordvalue != E_DOOR_REV_2))
 						{
 							if((wordvalue != E_BUS_OFF_A) && (wordvalue != E_CAN_OVERRUN_A) &&
@@ -189,7 +205,7 @@ void ReadCanA (void)
 							write_errorhist (wordvalue, id, 0, 5);
 						}					
 				}
-//Can ´íÎó¼ÆÊý
+//Can ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			if((wordvalue == E_BUS_OFF_A) || (wordvalue == E_CAN_PASSIVE_A))				
 				cana_error_count += 2;
 			else if	((wordvalue == E_CAN_OVERRUN_A) || (wordvalue == E_CAN_OV_SW_A) || 
@@ -304,7 +320,7 @@ void ReadCanA (void)
 			}
 			break;
 
-//Ôö¼Ó²âÊÔÒÇµÄÆô¶¯¹¦ÄÜ		
+//ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ï¿½ï¿½Çµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½		
 		case (NMT):			
 			if (id == MON_ID)
 				{
@@ -315,7 +331,7 @@ void ReadCanA (void)
 						send_pos_fg = 0;
 				}
 			break;
-//Ôö¼Ó²âÊÔÒÇµÄÆô¶¯¹¦ÄÜ		
+//ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ï¿½ï¿½Çµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½		
 	}
 	if (roa >= (RXASW_SIZE - 1))
 		roa = 0;
@@ -353,7 +369,7 @@ BYTE check_txa (void)
 //**************************************************************************************************
 // Send heartbeat on CAN bus A
 //**************************************************************************************************
-void send_heartbeat_a (void){//100ms ·¢ËÍ
+void send_heartbeat_a (void){//100ms ï¿½ï¿½ï¿½ï¿½
 	if (CAN1SR & SR_TCS2)
 	{
 		if (tea) 										// TX not enabled
@@ -380,7 +396,7 @@ void send_heartbeat_a (void){//100ms ·¢ËÍ
 		}
 		if (canatxerror <= TXERRORLIMIT)
 			canatxerror++;
-		txa_fve_error = 200;//20;			//Éè¶¨ 10s ÐÄÌø
+		txa_fve_error = 200;//20;			//ï¿½è¶¨ 10s ï¿½ï¿½ï¿½ï¿½
 		txa_tse_error = 20;
 		txa_exe_error = 20;
 		CAN1CMR = CMD_TRAN_BUFF2;
@@ -513,12 +529,12 @@ void door_command (BYTE door1, BYTE door2)
 		WriteCanA ();									// transmit message and set FIFO pointer
 	}
 
-//	Ôö¼Ó¿ª¹ØÃÅ°´Å¥Ö¸Ê¾µÆµÄ²Ù×÷  2014-06-26
+//	ï¿½ï¿½ï¿½Ó¿ï¿½ï¿½ï¿½ï¿½Å°ï¿½Å¥Ö¸Ê¾ï¿½ÆµÄ²ï¿½ï¿½ï¿½  2014-06-26
 	if (!firedoormode && ((door1 != door1command_old) || ((door2 != door2command_old) && (p.doornumber > 1))))		// transmit buffer empty
 		{
 			if((((door1 == CLOSE_DOOR) || (door1 == CLOSE_DOOR_L)))
 				|| (((door2 == CLOSE_DOOR) || (door2 == CLOSE_DOOR_L))))
-				{//¹ØÃÅ 		
+				{//ï¿½ï¿½ï¿½ï¿½ 		
 					if((door1 == CLOSE_DOOR) || (door1 == CLOSE_DOOR_L))
 						door_close_open = (door_close_open & 0x03) | 1;
 					if((door2 == CLOSE_DOOR) || (door2 == CLOSE_DOOR_L))
@@ -527,14 +543,14 @@ void door_command (BYTE door1, BYTE door2)
 				}
 			else if((((door1 == OPEN_DOOR) || (door1 == OPEN_DOOR_L)))
 				|| (((door2 == OPEN_DOOR) || (door2 == OPEN_DOOR_L))))
-				{//¿ªÃÅ				
+				{//ï¿½ï¿½ï¿½ï¿½				
 					door_close_open = 8;
 					cl_op_fg = 0;
 				}
 			door1command_old = door1;
 			door2command_old = door2;
 		}
-//	Ôö¼Ó¿ª¹ØÃÅ°´Å¥Ö¸Ê¾µÆµÄ²Ù×÷	2014-06-26
+//	ï¿½ï¿½ï¿½Ó¿ï¿½ï¿½ï¿½ï¿½Å°ï¿½Å¥Ö¸Ê¾ï¿½ÆµÄ²ï¿½ï¿½ï¿½	2014-06-26
 
 }
 
@@ -819,7 +835,7 @@ void time_message_a (void)
 	}
 }
 
-//·¢ËÍ²âÊÔÒÇËùÐèµÄÎ»ÖÃÐÅÏ¢
+//ï¿½ï¿½ï¿½Í²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½ï¿½ï¿½Ï¢
 void	send_drive_pos(void){	
 	if (check_txa ())
 	{

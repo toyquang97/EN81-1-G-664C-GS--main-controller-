@@ -9,6 +9,14 @@
 #include "history.h"
 #include "Nice5000.h"
 
+DWORD Nudging_timer_count =0-1;
+BYTE  NudingMode =0;
+BYTE  Enabal_opendoor =1;
+BYTE hhhhhhhhh =0,tttttttt =0;
+DWORD Nudging_Buz_timer_count =0-1;
+DWORD Nudging_opendoor_timer_count =0-1;
+
+
 /****************************************************************************************************/
 /* Definitions for door open state																	*/
 /****************************************************************************************************/
@@ -180,9 +188,11 @@ BYTE set_park_state (void)
 /****************************************************************************************************/
 BYTE handle_dooropenpush (void)
 {
+	
 	BYTE i = 0;
 	static BYTE dooropenpush_old = 0;
-
+	if(!Enabal_opendoor)
+		return 0;
 	dooropenpush &= p.doorpos [level];				/* only use existing shaft doors		*/
 	if (callpriority == C_FIREMAN)					/* lift is in fireman mode				*/
 	{
@@ -316,6 +326,12 @@ BYTE she_parkdoor(void){
 /****************************************************************************************************/
 /* Standstill in normal mode																		*/
 /****************************************************************************************************/
+
+void Reset_NudgingMode(void)
+{
+	
+}
+
 void standstill_state (void)
 {
 	DWORD carlighttimer;
@@ -767,7 +783,9 @@ void standstill_state (void)
 							doordelaytimer = timer + p.max_door_close_group SEC;
 							
 							
-							 = timer + 60 SEC;			/* max. waiting time until door is closed	*/
+							
+
+							doorclosetimer = timer + 60 SEC;			/* max. waiting time until door is closed	*/
 							forced_door_cl = forced_closing ();		/* check if forced door closing necessary	*/
 						}
 					}
@@ -912,6 +930,56 @@ void standstill_state (void)
 						&& ((callpriority != C_FIREALARM) || ((p.evac_fire_carlightmode & 0x02) == 0)))
 					carlighttimer = timer + (p.carlighttimer SEC);			/* retrigger timer								*/
 			}
+
+			// sua nudging
+		if(level != p.fire_floor[0])
+		{
+				if(!(callpriority == C_FIREALARM))
+				{
+					NudingMode = 0;
+					Nudging_timer_count = 0-1;
+					Nudging_Buz_timer_count = 0-1;
+				}
+				else
+				{
+					if((Nudging_timer_count == (0-1)) && (door_state[0] != DOOR_CLOSED) )
+					{
+						Nudging_timer_count = timer+ 15 SEC;
+					}
+				}
+				if( timer > Nudging_timer_count  )
+				{
+					//over 2min
+					Nudging_timer_count = 0-1;
+					set_door(ALL_DOORS_CLOSED,CLOSE_DOOR); // close door
+					//out nudging
+					set_out (DOOR_IO, DOOR_REV, 0, EXISTING_DOORS,1 , O_CANA);  
+					set_out (SPEAKER_BUZ, BUZZER_FIRE, 0, EXISTING_DOORS, 1 , O_CANA);   //buzzer on
+					set_out (SPECIAL_FUNC, DOOR_OPEN, 0, EXISTING_DOORS, 0, O_CANA);  //turn off open led
+					set_out (SPECIAL_FUNC, DOOR_CLOSE, 0, EXISTING_DOORS, 1, O_CANA); //turn on open led
+					NudingMode = 1;
+					Enabal_opendoor =0;
+					Nudging_Buz_timer_count = timer +4 SEC;
+				}
+				if( timer > Nudging_Buz_timer_count  )
+				{
+					set_out (SPEAKER_BUZ, BUZZER_FIRE, 0, EXISTING_DOORS, 1 , O_CANA);
+					Nudging_Buz_timer_count = timer +4 SEC;
+				}
+		}
+		
+		if(NudingMode)
+		{
+			if(callpriority != C_FIREALARM)
+				{
+						Enabal_opendoor =1;
+						Nudging_Buz_timer_count = 0-1;
+						NudingMode = 0;
+						set_out (DOOR_IO, DOOR_REV, 0, EXISTING_DOORS,0 , O_CANA); 
+						set_out (SPEAKER_BUZ, BUZZER_FIRE, 0, EXISTING_DOORS, 0 , O_CANA); 
+				}
+		}
+		// sua end
 		if (handle_dooropenpush ())							/* handle door open push						*/
 		{
 			doorstaystate = D_STAYTIME;
@@ -919,6 +987,16 @@ void standstill_state (void)
 			((ct - timer) <= (doorstaytime_cc SEC)))			/* or open stay time with landing calls over		*/
 				ct = timer + (doorstaytime_cc SEC);			/* Timer for door open stay time with car call	*/
 		}
+		//add
+		if(!Enabal_opendoor)
+		{
+			if(timer > Nudging_opendoor_timer_count)
+				{
+					Nudging_opendoor_timer_count = 0-1;
+					Enabal_opendoor = 1;
+				}
+		}
+		//end
 		handle_doorstoppush ();
 		if ((doorstopstate) || (she_photonsensor) || (she_doorstoppush))
 		{

@@ -6,7 +6,8 @@
 #include "can.h"
 #include "history.h"
 
-
+extern BYTE  NudingMode;
+extern BYTE  Enabal_opendoor;
 /****************************************************************************************************/
 /* handle input																						*/
 /* active: 0=SDO message; 1=PDO message;															*/
@@ -111,7 +112,7 @@ void handle_input (BYTE liftnumber, BYTE active)
 									}
 								else
 									dooropenpush = virt_in [IO_DOOR];
-								if ((!door_close_open) && (!firedoormode) && (hse_state == H_STANDSTILL))
+								if ((!door_close_open) && (!firedoormode) && (hse_state == H_STANDSTILL) &&(Enabal_opendoor))
 									{
 										door = dooropenpush & p.doorpos[level];
 										if(door)
@@ -669,9 +670,7 @@ void handle_input (BYTE liftnumber, BYTE active)
 					door_io [i] &= (~virt_in [IO_SUB_FUNC]);
 				door_io [i] &= ~NOT_AVAILABLE;
 	  	}
-			if(virt_in [IO_SUB_FUNC] =
-			
-			= DOOR_REV)
+			if(virt_in [IO_SUB_FUNC] == DOOR_REV)
 				{//��ȫ����
 					if (virt_in [IO_STATE]) 							/* light screen is on (interrupted) 			*/
 						ls_state |= (virt_in [IO_DOOR] << 4);

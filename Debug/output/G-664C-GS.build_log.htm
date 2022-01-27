@@ -1,0 +1,528 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: µVision V5.32.0.0
+Copyright (C) 2020 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: Phan Hoang, School, LIC=PE7DL-0HS11-454T5-GD0KK-55IIQ-7HT0I
+ 
+Tool Versions:
+Toolchain:       MDK-ARM Plus  Version: 5.32.0.0
+Toolchain Path:  C:\Keil_v5\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.06 update 7 (build 960)
+Assembler:       Armasm.exe V5.06 update 7 (build 960)
+Linker/Locator:  ArmLink.exe V5.06 update 7 (build 960)
+Library Manager: ArmAr.exe V5.06 update 7 (build 960)
+Hex Converter:   FromElf.exe V5.06 update 7 (build 960)
+CPU DLL:         SARMCM3.DLL V5.32.0.0
+Dialog DLL:      DARMP1.DLL V1.27.0.0
+Target DLL:      Segger\JL2CM3.dll V2.99.38.0
+Dialog DLL:      TARMP1.DLL V1.26.0.0
+ 
+<h2>Project:</h2>
+F:\2.FIRMWARE\8.EN81-1\Source Code 20190911\G-664C GS (main controller)\Debug\G-664C-GS.uvprojx
+Project File Date:  07/19/2021
+
+<h2>Output:</h2>
+*** Using Compiler 'V5.06 update 7 (build 960)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
+Rebuild target 'Target 1'
+assembling startup_LPC17xx.s...
+compiling can_b.c...
+..\include\parameter.h(1032): warning:  #64-D: declaration does not declare anything
+  extern BYTE ;				// car light state
+..\include\parameter.h(1032): warning:  #1000-D: a storage class may not be specified here
+  extern BYTE ;				// car light state
+..\include\history.h(40): warning:  #64-D: declaration does not declare anything
+  	BYTE ;									// car light state
+..\src\can_b.c(546): error:  #20: identifier "carlight" is undefined
+  		if(carlight)
+..\src\can_b.c: 3 warnings, 1 error
+compiling can_a.c...
+..\include\parameter.h(1032): warning:  #64-D: declaration does not declare anything
+  extern BYTE ;				// car light state
+..\include\parameter.h(1032): warning:  #1000-D: a storage class may not be specified here
+  extern BYTE ;				// car light state
+..\include\history.h(40): warning:  #64-D: declaration does not declare anything
+  	BYTE ;									// car light state
+..\src\can_a.c(699): error:  #20: identifier "carlight" is undefined
+  		if(carlight)
+..\src\can_a.c: 3 warnings, 1 error
+compiling can_c.c...
+..\include\parameter.h(1032): warning:  #64-D: declaration does not declare anything
+  extern BYTE ;				// car light state
+..\include\parameter.h(1032): warning:  #1000-D: a storage class may not be specified here
+  extern BYTE ;				// car light state
+..\include\history.h(40): warning:  #64-D: declaration does not declare anything
+  	BYTE ;									// car light state
+..\src\can_c.c: 3 warnings, 0 errors
+compiling arrival.c...
+..\include\parameter.h(1032): warning:  #64-D: declaration does not declare anything
+  extern BYTE ;				// car light state
+..\include\parameter.h(1032): warning:  #1000-D: a storage class may not be specified here
+  extern BYTE ;				// car light state
+..\include\history.h(40): warning:  #64-D: declaration does not declare anything
+  	BYTE ;									// car light state
+..\src\arrival.c: 3 warnings, 0 errors
+compiling can_err.c...
+..\include\parameter.h(1032): warning:  #64-D: declaration does not declare anything
+  extern BYTE ;				// car light state
+..\include\parameter.h(1032): warning:  #1000-D: a storage class may not be specified here
+  extern BYTE ;				// car light state
+..\include\history.h(40): warning:  #64-D: declaration does not declare anything
+  	BYTE ;									// car light state
+..\src\can_err.c: 3 warnings, 0 errors
+compiling call.c...
+..\include\parameter.h(1032): warning:  #64-D: declaration does not declare anything
+  extern BYTE ;				// car light state
+..\include\parameter.h(1032): warning:  #1000-D: a storage class may not be specified here
+  extern BYTE ;				// car light state
+..\src\call.c: 2 warnings, 0 errors
+compiling can.c...
+..\include\parameter.h(1032): warning:  #64-D: declaration does not declare anything
+  extern BYTE ;				// car light state
+..\include\parameter.h(1032): warning:  #1000-D: a storage class may not be specified here
+  extern BYTE ;				// car light state
+..\include\history.h(40): warning:  #64-D: declaration does not declare anything
+  	BYTE ;									// car light state
+..\src\can.c: 3 warnings, 0 errors
+compiling cycle.c...
+..\include\parameter.h(1032): warning:  #64-D: declaration does not declare anything
+  extern BYTE ;				// car light state
+..\include\parameter.h(1032): warning:  #1000-D: a storage class may not be specified here
+  extern BYTE ;				// car light state
+..\include\history.h(40): warning:  #64-D: declaration does not declare anything
+  	BYTE ;									// car light state
+..\src\cycle.c(491): error:  #20: identifier "carlight" is undefined
+  			(!carlight) || (steel_broke))											/* car light is off 				*/
+..\src\cycle.c: 3 warnings, 1 error
+compiling dict.c...
+..\include\parameter.h(1032): warning:  #64-D: declaration does not declare anything
+  extern BYTE ;				// car light state
+..\include\parameter.h(1032): warning:  #1000-D: a storage class may not be specified here
+  extern BYTE ;				// car light state
+..\src\dict.c: 2 warnings, 0 errors
+compiling doortest.c...
+..\include\parameter.h(1032): warning:  #64-D: declaration does not declare anything
+  extern BYTE ;				// car light state
+..\include\parameter.h(1032): warning:  #1000-D: a storage class may not be specified here
+  extern BYTE ;				// car light state
+..\src\doortest.c: 2 warnings, 0 errors
+compiling door_op.c...
+..\include\parameter.h(1032): warning:  #64-D: declaration does not declare anything
+  extern BYTE ;				// car light state
+..\include\parameter.h(1032): warning:  #1000-D: a storage class may not be specified here
+  extern BYTE ;				// car light state
+..\include\history.h(40): warning:  #64-D: declaration does not declare anything
+  	BYTE ;									// car light state
+..\src\door_op.c: 3 warnings, 0 errors
+compiling drive.c...
+..\include\parameter.h(1032): warning:  #64-D: declaration does not declare anything
+  extern BYTE ;				// car light state
+..\include\parameter.h(1032): warning:  #1000-D: a storage class may not be specified here
+  extern BYTE ;				// car light state
+..\src\drive.c: 2 warnings, 0 errors
+compiling diving.c...
+..\include\parameter.h(1032): warning:  #64-D: declaration does not declare anything
+  extern BYTE ;				// car light state
+..\include\parameter.h(1032): warning:  #1000-D: a storage class may not be specified here
+  extern BYTE ;				// car light state
+..\include\history.h(40): warning:  #64-D: declaration does not declare anything
+  	BYTE ;									// car light state
+..\src\diving.c: 3 warnings, 0 errors
+compiling drv_err.c...
+..\include\parameter.h(1032): warning:  #64-D: declaration does not declare anything
+  extern BYTE ;				// car light state
+..\include\parameter.h(1032): warning:  #1000-D: a storage class may not be specified here
+  extern BYTE ;				// car light state
+..\src\drv_err.c: 2 warnings, 0 errors
+compiling err_rel.c...
+..\include\parameter.h(1032): warning:  #64-D: declaration does not declare anything
+  extern BYTE ;				// car light state
+..\include\parameter.h(1032): warning:  #1000-D: a storage class may not be specified here
+  extern BYTE ;				// car light state
+..\include\history.h(40): warning:  #64-D: declaration does not declare anything
+  	BYTE ;									// car light state
+..\src\err_rel.c(104): error:  #20: identifier "carlight" is undefined
+  		if (((!carlight) && carlightstate)				/* car light is on and was off before			*/
+..\src\err_rel.c: 3 warnings, 1 error
+compiling eeprom.c...
+..\include\parameter.h(1032): warning:  #64-D: declaration does not declare anything
+  extern BYTE ;				// car light state
+..\include\parameter.h(1032): warning:  #1000-D: a storage class may not be specified here
+  extern BYTE ;				// car light state
+..\src\eeprom.c: 2 warnings, 0 errors
+compiling em_op.c...
+..\include\parameter.h(1032): warning:  #64-D: declaration does not declare anything
+  extern BYTE ;				// car light state
+..\include\parameter.h(1032): warning:  #1000-D: a storage class may not be specified here
+  extern BYTE ;				// car light state
+..\include\history.h(40): warning:  #64-D: declaration does not declare anything
+  	BYTE ;									// car light state
+..\src\em_op.c: 3 warnings, 0 errors
+compiling evac.c...
+..\include\parameter.h(1032): warning:  #64-D: declaration does not declare anything
+  extern BYTE ;				// car light state
+..\include\parameter.h(1032): warning:  #1000-D: a storage class may not be specified here
+  extern BYTE ;				// car light state
+..\include\history.h(40): warning:  #64-D: declaration does not declare anything
+  	BYTE ;									// car light state
+..\src\evac.c: 3 warnings, 0 errors
+compiling ese.c...
+..\include\parameter.h(1032): warning:  #64-D: declaration does not declare anything
+  extern BYTE ;				// car light state
+..\include\parameter.h(1032): warning:  #1000-D: a storage class may not be specified here
+  extern BYTE ;				// car light state
+..\include\history.h(40): warning:  #64-D: declaration does not declare anything
+  	BYTE ;									// car light state
+..\src\ese.c: 3 warnings, 0 errors
+compiling error.c...
+..\include\parameter.h(1032): warning:  #64-D: declaration does not declare anything
+  extern BYTE ;				// car light state
+..\include\parameter.h(1032): warning:  #1000-D: a storage class may not be specified here
+  extern BYTE ;				// car light state
+..\include\history.h(40): warning:  #64-D: declaration does not declare anything
+  	BYTE ;									// car light state
+..\src\error.c: 3 warnings, 0 errors
+compiling history.c...
+..\include\parameter.h(1032): warning:  #64-D: declaration does not declare anything
+  extern BYTE ;				// car light state
+..\include\parameter.h(1032): warning:  #1000-D: a storage class may not be specified here
+  extern BYTE ;				// car light state
+..\include\history.h(40): warning:  #64-D: declaration does not declare anything
+  	BYTE ;									// car light state
+..\src\history.c(109): error:  #136: struct "Hist"  has no field "carlight"
+  		errorhist.hist [i].carlight = carlight;
+..\src\history.c(109): error:  #20: identifier "carlight" is undefined
+  		errorhist.hist [i].carlight = carlight;
+..\src\history.c(222): error:  #136: struct "Hist"  has no field "carlight"
+  	errstatus.carlight = carlight;
+..\src\history.c(222): error:  #20: identifier "carlight" is undefined
+  	errstatus.carlight = carlight;
+..\src\history.c: 3 warnings, 4 errors
+compiling exe.c...
+..\include\parameter.h(1032): warning:  #64-D: declaration does not declare anything
+  extern BYTE ;				// car light state
+..\include\parameter.h(1032): warning:  #1000-D: a storage class may not be specified here
+  extern BYTE ;				// car light state
+..\include\history.h(40): warning:  #64-D: declaration does not declare anything
+  	BYTE ;									// car light state
+..\src\exe.c: 3 warnings, 0 errors
+compiling hb_err.c...
+..\include\parameter.h(1032): warning:  #64-D: declaration does not declare anything
+  extern BYTE ;				// car light state
+..\include\parameter.h(1032): warning:  #1000-D: a storage class may not be specified here
+  extern BYTE ;				// car light state
+..\src\hb_err.c: 2 warnings, 0 errors
+compiling i2c.c...
+..\include\parameter.h(1032): warning:  #64-D: declaration does not declare anything
+  extern BYTE ;				// car light state
+..\include\parameter.h(1032): warning:  #1000-D: a storage class may not be specified here
+  extern BYTE ;				// car light state
+..\src\i2c.c: 2 warnings, 0 errors
+compiling init.c...
+..\include\parameter.h(1032): warning:  #64-D: declaration does not declare anything
+  extern BYTE ;				// car light state
+..\include\parameter.h(1032): warning:  #1000-D: a storage class may not be specified here
+  extern BYTE ;				// car light state
+..\src\init.c(206): error:  #20: identifier "carlight" is undefined
+  				if (!carlight)
+..\src\init.c: 2 warnings, 1 error
+compiling input.c...
+..\include\parameter.h(1032): warning:  #64-D: declaration does not declare anything
+  extern BYTE ;				// car light state
+..\include\parameter.h(1032): warning:  #1000-D: a storage class may not be specified here
+  extern BYTE ;				// car light state
+..\include\history.h(40): warning:  #64-D: declaration does not declare anything
+  	BYTE ;									// car light state
+..\src\input.c(264): error:  #20: identifier "LIGHT_SWITCH" is undefined
+  				case (LIGHT_SWITCH):
+..\src\input.c(627): error:  #20: identifier "carlight" is undefined
+  					if (!carlight)									/* car light was off							*/
+..\src\input.c(633): error:  #20: identifier "carlight" is undefined
+  					if (carlight) 								/* car light was on 						*/
+..\src\input.c(639): error:  #20: identifier "carlight" is undefined
+  			carlight = 1; 
+..\src\input.c(674): error:  #29: expected an expression
+  			= DOOR_REV)
+..\src\input.c(672): warning:  #1293-D: assignment in condition
+  			if(virt_in [IO_SUB_FUNC] =
+..\src\input.c: 4 warnings, 5 errors
+compiling hwtest.c...
+..\include\parameter.h(1032): warning:  #64-D: declaration does not declare anything
+  extern BYTE ;				// car light state
+..\include\parameter.h(1032): warning:  #1000-D: a storage class may not be specified here
+  extern BYTE ;				// car light state
+..\src\hwtest.c: 2 warnings, 0 errors
+compiling insp.c...
+..\include\parameter.h(1032): warning:  #64-D: declaration does not declare anything
+  extern BYTE ;				// car light state
+..\include\parameter.h(1032): warning:  #1000-D: a storage class may not be specified here
+  extern BYTE ;				// car light state
+..\include\history.h(40): warning:  #64-D: declaration does not declare anything
+  	BYTE ;									// car light state
+..\src\insp.c: 3 warnings, 0 errors
+compiling io.c...
+..\include\parameter.h(1032): warning:  #64-D: declaration does not declare anything
+  extern BYTE ;				// car light state
+..\include\parameter.h(1032): warning:  #1000-D: a storage class may not be specified here
+  extern BYTE ;				// car light state
+..\include\history.h(40): warning:  #64-D: declaration does not declare anything
+  	BYTE ;									// car light state
+..\src\io.c(675): error:  #20: identifier "carlight" is undefined
+  					else if(!carlight)
+..\src\io.c: 3 warnings, 1 error
+compiling load.c...
+..\include\parameter.h(1032): warning:  #64-D: declaration does not declare anything
+  extern BYTE ;				// car light state
+..\include\parameter.h(1032): warning:  #1000-D: a storage class may not be specified here
+  extern BYTE ;				// car light state
+..\src\load.c: 2 warnings, 0 errors
+compiling mcp2515.c...
+..\include\parameter.h(1032): warning:  #64-D: declaration does not declare anything
+  extern BYTE ;				// car light state
+..\include\parameter.h(1032): warning:  #1000-D: a storage class may not be specified here
+  extern BYTE ;				// car light state
+..\include\history.h(40): warning:  #64-D: declaration does not declare anything
+  	BYTE ;									// car light state
+..\src\mcp2515.c: 3 warnings, 0 errors
+compiling no_setup.c...
+..\include\parameter.h(1032): warning:  #64-D: declaration does not declare anything
+  extern BYTE ;				// car light state
+..\include\parameter.h(1032): warning:  #1000-D: a storage class may not be specified here
+  extern BYTE ;				// car light state
+..\src\no_setup.c: 2 warnings, 0 errors
+compiling moving.c...
+..\include\parameter.h(1032): warning:  #64-D: declaration does not declare anything
+  extern BYTE ;				// car light state
+..\include\parameter.h(1032): warning:  #1000-D: a storage class may not be specified here
+  extern BYTE ;				// car light state
+..\include\history.h(40): warning:  #64-D: declaration does not declare anything
+  	BYTE ;									// car light state
+..\src\moving.c: 3 warnings, 0 errors
+compiling main.c...
+..\include\parameter.h(1032): warning:  #64-D: declaration does not declare anything
+  extern BYTE ;				// car light state
+..\include\parameter.h(1032): warning:  #1000-D: a storage class may not be specified here
+  extern BYTE ;				// car light state
+..\include\history.h(40): warning:  #64-D: declaration does not declare anything
+  	BYTE ;									// car light state
+..\src\main.c: 3 warnings, 0 errors
+compiling relev.c...
+..\include\parameter.h(1032): warning:  #64-D: declaration does not declare anything
+  extern BYTE ;				// car light state
+..\include\parameter.h(1032): warning:  #1000-D: a storage class may not be specified here
+  extern BYTE ;				// car light state
+..\include\history.h(40): warning:  #64-D: declaration does not declare anything
+  	BYTE ;									// car light state
+..\src\relev.c(44): error:  #7: unrecognized token
+  			start_drive (relev_dir);				/* start drive								*/`
+..\src\relev.c(44): error:  #29: expected an expression
+  			start_drive (relev_dir);				/* start drive								*/`
+..\src\relev.c: 3 warnings, 2 errors
+compiling parameter.c...
+..\include\parameter.h(1032): warning:  #64-D: declaration does not declare anything
+  extern BYTE ;				// car light state
+..\include\parameter.h(1032): warning:  #1000-D: a storage class may not be specified here
+  extern BYTE ;				// car light state
+..\include\history.h(40): warning:  #64-D: declaration does not declare anything
+  	BYTE ;									// car light state
+..\src\parameter.c: 3 warnings, 0 errors
+compiling pos.c...
+..\include\parameter.h(1032): warning:  #64-D: declaration does not declare anything
+  extern BYTE ;				// car light state
+..\include\parameter.h(1032): warning:  #1000-D: a storage class may not be specified here
+  extern BYTE ;				// car light state
+..\include\history.h(40): warning:  #64-D: declaration does not declare anything
+  	BYTE ;									// car light state
+..\src\pos.c: 3 warnings, 0 errors
+compiling lcd.c...
+..\include\parameter.h(1032): warning:  #64-D: declaration does not declare anything
+  extern BYTE ;				// car light state
+..\include\parameter.h(1032): warning:  #1000-D: a storage class may not be specified here
+  extern BYTE ;				// car light state
+..\include\history.h(40): warning:  #64-D: declaration does not declare anything
+  	BYTE ;									// car light state
+..\src\lcd.c: 3 warnings, 0 errors
+compiling nice5000.c...
+..\include\parameter.h(1032): warning:  #64-D: declaration does not declare anything
+  extern BYTE ;				// car light state
+..\include\parameter.h(1032): warning:  #1000-D: a storage class may not be specified here
+  extern BYTE ;				// car light state
+..\include\history.h(40): warning:  #64-D: declaration does not declare anything
+  	BYTE ;									// car light state
+..\src\nice5000.c: 3 warnings, 0 errors
+compiling res_trip.c...
+..\include\parameter.h(1032): warning:  #64-D: declaration does not declare anything
+  extern BYTE ;				// car light state
+..\include\parameter.h(1032): warning:  #1000-D: a storage class may not be specified here
+  extern BYTE ;				// car light state
+..\include\history.h(40): warning:  #64-D: declaration does not declare anything
+  	BYTE ;									// car light state
+..\src\res_trip.c: 3 warnings, 0 errors
+compiling rtc.c...
+..\include\parameter.h(1032): warning:  #64-D: declaration does not declare anything
+  extern BYTE ;				// car light state
+..\include\parameter.h(1032): warning:  #1000-D: a storage class may not be specified here
+  extern BYTE ;				// car light state
+..\src\rtc.c: 2 warnings, 0 errors
+compiling sc_error.c...
+..\include\parameter.h(1032): warning:  #64-D: declaration does not declare anything
+  extern BYTE ;				// car light state
+..\include\parameter.h(1032): warning:  #1000-D: a storage class may not be specified here
+  extern BYTE ;				// car light state
+..\include\history.h(40): warning:  #64-D: declaration does not declare anything
+  	BYTE ;									// car light state
+..\src\sc_error.c: 3 warnings, 0 errors
+compiling sp_trip.c...
+..\include\parameter.h(1032): warning:  #64-D: declaration does not declare anything
+  extern BYTE ;				// car light state
+..\include\parameter.h(1032): warning:  #1000-D: a storage class may not be specified here
+  extern BYTE ;				// car light state
+..\src\sp_trip.c: 2 warnings, 0 errors
+compiling set_para.c...
+..\include\parameter.h(1032): warning:  #64-D: declaration does not declare anything
+  extern BYTE ;				// car light state
+..\include\parameter.h(1032): warning:  #1000-D: a storage class may not be specified here
+  extern BYTE ;				// car light state
+..\include\history.h(40): warning:  #64-D: declaration does not declare anything
+  	BYTE ;									// car light state
+..\src\set_para.c(664): error:  #20: identifier "LIGHT_SWITCH" is undefined
+  		p.tse_inpar[i][21][IO_SUB_FUNC] = LIGHT_SWITCH;
+..\src\set_para.c: 3 warnings, 1 error
+compiling start.c...
+..\include\parameter.h(1032): warning:  #64-D: declaration does not declare anything
+  extern BYTE ;				// car light state
+..\include\parameter.h(1032): warning:  #1000-D: a storage class may not be specified here
+  extern BYTE ;				// car light state
+..\include\history.h(40): warning:  #64-D: declaration does not declare anything
+  	BYTE ;									// car light state
+..\src\start.c: 3 warnings, 0 errors
+compiling still.c...
+..\include\parameter.h(1032): warning:  #64-D: declaration does not declare anything
+  extern BYTE ;				// car light state
+..\include\parameter.h(1032): warning:  #1000-D: a storage class may not be specified here
+  extern BYTE ;				// car light state
+..\include\history.h(40): warning:  #64-D: declaration does not declare anything
+  	BYTE ;									// car light state
+..\src\still.c(770): error:  #29: expected an expression
+  							 = timer + 60 SEC;			/* max. waiting time until door is closed	*/
+..\src\still.c: 3 warnings, 1 error
+compiling state.c...
+..\include\parameter.h(1032): warning:  #64-D: declaration does not declare anything
+  extern BYTE ;				// car light state
+..\include\parameter.h(1032): warning:  #1000-D: a storage class may not be specified here
+  extern BYTE ;				// car light state
+..\include\history.h(40): warning:  #64-D: declaration does not declare anything
+  	BYTE ;									// car light state
+..\src\state.c(743): error:  #20: identifier "carlight" is undefined
+  		if ((!carlight) ||							/* car light is off							*/
+..\src\state.c(785): error:  #20: identifier "carlight" is undefined
+  				else if (!carlight)					/* car light is off							*/
+..\src\state.c: 3 warnings, 2 errors
+compiling temperature.c...
+..\include\parameter.h(1032): warning:  #64-D: declaration does not declare anything
+  extern BYTE ;				// car light state
+..\include\parameter.h(1032): warning:  #1000-D: a storage class may not be specified here
+  extern BYTE ;				// car light state
+..\src\temperature.c: 2 warnings, 0 errors
+compiling teach.c...
+..\include\parameter.h(1032): warning:  #64-D: declaration does not declare anything
+  extern BYTE ;				// car light state
+..\include\parameter.h(1032): warning:  #1000-D: a storage class may not be specified here
+  extern BYTE ;				// car light state
+..\src\teach.c: 2 warnings, 0 errors
+compiling term.c...
+..\include\parameter.h(1032): warning:  #64-D: declaration does not declare anything
+  extern BYTE ;				// car light state
+..\include\parameter.h(1032): warning:  #1000-D: a storage class may not be specified here
+  extern BYTE ;				// car light state
+..\src\term.c: 2 warnings, 0 errors
+compiling test.c...
+..\include\parameter.h(1032): warning:  #64-D: declaration does not declare anything
+  extern BYTE ;				// car light state
+..\include\parameter.h(1032): warning:  #1000-D: a storage class may not be specified here
+  extern BYTE ;				// car light state
+..\include\history.h(40): warning:  #64-D: declaration does not declare anything
+  	BYTE ;									// car light state
+..\src\test.c(751): error:  #20: identifier "LIGHT_SWITCH" is undefined
+  			p.tse_inpar[i][21][IO_SUB_FUNC] = LIGHT_SWITCH;
+..\src\test.c: 3 warnings, 1 error
+compiling version.c...
+..\include\parameter.h(1032): warning:  #64-D: declaration does not declare anything
+  extern BYTE ;				// car light state
+..\include\parameter.h(1032): warning:  #1000-D: a storage class may not be specified here
+  extern BYTE ;				// car light state
+..\src\version.c: 2 warnings, 0 errors
+compiling text.c...
+..\include\parameter.h(1032): warning:  #64-D: declaration does not declare anything
+  extern BYTE ;				// car light state
+..\include\parameter.h(1032): warning:  #1000-D: a storage class may not be specified here
+  extern BYTE ;				// car light state
+..\include\history.h(40): warning:  #64-D: declaration does not declare anything
+  	BYTE ;									// car light state
+..\src\text.c(580): error:  #136: struct "Hist"  has no field "carlight"
+  	{	"Carlight",		"Carlight",			M_BITPARA,		&hist.hist[0].carlight,					sizeof(hist.hist[0].carlight),					off_on										},
+..\src\text.c(580): error:  #136: struct "Hist"  has no field "carlight"
+  	{	"Carlight",		"Carlight",			M_BITPARA,		&hist.hist[0].carlight,					sizeof(hist.hist[0].carlight),					off_on										},
+..\src\text.c(742): error:  #20: identifier "LIGHT_SWITCH" is undefined
+  	{ "Light switch", "Light switch", 	LIGHT_SWITCH, 		0xE3, 'l',	'l' },
+..\src\text.c: 3 warnings, 3 errors
+compiling wait.c...
+..\include\parameter.h(1032): warning:  #64-D: declaration does not declare anything
+  extern BYTE ;				// car light state
+..\include\parameter.h(1032): warning:  #1000-D: a storage class may not be specified here
+  extern BYTE ;				// car light state
+..\src\wait.c: 2 warnings, 0 errors
+compiling tse.c...
+..\include\parameter.h(1032): warning:  #64-D: declaration does not declare anything
+  extern BYTE ;				// car light state
+..\include\parameter.h(1032): warning:  #1000-D: a storage class may not be specified here
+  extern BYTE ;				// car light state
+..\include\history.h(40): warning:  #64-D: declaration does not declare anything
+  	BYTE ;									// car light state
+..\src\tse.c: 3 warnings, 0 errors
+compiling timer.c...
+..\include\parameter.h(1032): warning:  #64-D: declaration does not declare anything
+  extern BYTE ;				// car light state
+..\include\parameter.h(1032): warning:  #1000-D: a storage class may not be specified here
+  extern BYTE ;				// car light state
+..\include\history.h(40): warning:  #64-D: declaration does not declare anything
+  	BYTE ;									// car light state
+..\src\timer.c: 3 warnings, 0 errors
+compiling menu.c...
+..\include\parameter.h(1032): warning:  #64-D: declaration does not declare anything
+  extern BYTE ;				// car light state
+..\include\parameter.h(1032): warning:  #1000-D: a storage class may not be specified here
+  extern BYTE ;				// car light state
+..\include\history.h(40): warning:  #64-D: declaration does not declare anything
+  	BYTE ;									// car light state
+..\src\menu.c: 3 warnings, 0 errors
+".\output\G-664C-GS.axf" - 25 Error(s), 153 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                http://www.keil.com/pack/ARM.CMSIS.5.7.0.pack
+                ARM.CMSIS.5.7.0
+                CMSIS (Cortex Microcontroller Software Interface Standard)
+   * Component: CORE Version: 5.4.0
+
+Package Vendor: Keil
+                http://www.keil.com/pack/Keil.LPC1700_DFP.2.7.0.pack
+                Keil.LPC1700_DFP.2.7.0
+                NXP LPC1700 Series Device Support, Drivers and Examples for MCB1700 and LPC1788-32
+
+<h2>Collection of Component include folders:</h2>
+  .\RTE\_Target_1
+  C:\Users\Admin\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include
+  C:\Users\Admin\AppData\Local\Arm\Packs\Keil\LPC1700_DFP\2.7.0\Device\Include
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE:5.4.0
+Target not created.
+Build Time Elapsed:  00:00:05
+</pre>
+</body>
+</html>

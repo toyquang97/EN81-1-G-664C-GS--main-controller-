@@ -1,0 +1,79 @@
+T1F04 000:163.562   SEGGER J-Link V6.86 Log File
+T1F04 000:164.050   DLL Compiled: Sep 24 2020 17:31:31
+T1F04 000:164.097   Logging started @ 2021-08-05 08:50
+T1F04 000:164.120 - 164.131ms
+T1F04 000:164.163 JLINK_SetWarnOutHandler(...)
+T1F04 000:164.191 - 0.040ms
+T1F04 000:164.221 JLINK_OpenEx(...)
+T1F04 000:169.954   Firmware: J-Link ARM V8 compiled Nov 28 2014 13:44:46
+T1F04 000:174.542   Hardware: V8.00
+T1F04 000:174.626   S/N: 4294967295
+T1F04 000:174.699   OEM: SEGGER
+T1F04 000:174.732   Feature(s): RDI,FlashDL,FlashBP,JFlash,GDB
+T1F04 000:177.234   TELNET listener socket opened on port 19021
+T1F04 000:177.825   WEBSRV Starting webserver
+T1F04 000:178.273   WEBSRV Webserver running on local port 19080
+T1F04 000:178.332 - 14.125ms returns "O.K."
+T1F04 000:178.397 JLINK_GetEmuCaps()
+T1F04 000:178.421 - 0.036ms returns 0xB9FF7BBF
+T1F04 000:178.465 JLINK_TIF_GetAvailable(...)
+T1F04 000:178.913 - 0.480ms
+T1F04 000:178.974 JLINK_SetErrorOutHandler(...)
+T1F04 000:178.999 - 0.036ms
+T1F04 000:179.077 JLINK_ExecCommand("ProjectFile = "F:\2.FIRMWARE\Source Code 20190911\G-664C GS (main controller)\Debug\JLinkSettings.ini"", ...). 
+T1F04 000:236.727 - 57.660ms returns 0x00
+T1F04 000:236.757 JLINK_ExecCommand("Device = LPC1768", ...). 
+T1F04 000:237.004   Device "LPC1768" selected.
+T1F04 000:237.279 - 0.519ms returns 0x00
+T1F04 000:237.302 JLINK_GetHardwareVersion()
+T1F04 000:237.309 - 0.009ms returns 80000
+T1F04 000:237.320 JLINK_GetDLLVersion()
+T1F04 000:237.327 - 0.009ms returns 68600
+T1F04 000:237.340 JLINK_GetOEMString(...)
+T1F04 000:237.349 JLINK_GetFirmwareString(...)
+T1F04 000:237.357 - 0.010ms
+T1F04 000:237.367 JLINK_GetDLLVersion()
+T1F04 000:237.373 - 0.009ms returns 68600
+T1F04 000:237.381 JLINK_GetCompileDateTime()
+T1F04 000:237.387 - 0.009ms
+T1F04 000:237.397 JLINK_GetFirmwareString(...)
+T1F04 000:237.403 - 0.009ms
+T1F04 000:237.412 JLINK_GetHardwareVersion()
+T1F04 000:237.418 - 0.009ms returns 80000
+T1F04 000:237.427 JLINK_GetSN()
+T1F04 000:237.434 - 0.010ms returns -1
+T1F04 000:237.442 JLINK_GetOEMString(...)
+T1F04 000:237.453 JLINK_TIF_Select(JLINKARM_TIF_SWD)
+T1F04 000:238.350 - 0.904ms returns 0x00
+T1F04 000:238.366 JLINK_HasError()
+T1F04 000:238.382 JLINK_SetSpeed(5000)
+T1F04 000:238.534 - 0.159ms
+T1F04 000:238.811 JLINK_HasError()
+T1F04 000:238.824 JLINK_SetResetType(JLINKARM_RESET_TYPE_NORMAL)
+T1F04 000:238.830 - 0.009ms returns ???
+T1F04 000:238.843 JLINK_Reset()
+T1F04 000:442.652   RESET (pin 15) high, but should be low. Please check target hardware.
+T1F04 000:749.661   RESET (pin 15) high, but should be low. Please check target hardware.
+T1F04 001:057.422   RESET (pin 15) high, but should be low. Please check target hardware.
+T1F04 001:364.554   RESET (pin 15) high, but should be low. Please check target hardware.
+T1F04 001:671.315   RESET (pin 15) high, but should be low. Please check target hardware.
+T1F04 001:979.406   RESET (pin 15) high, but should be low. Please check target hardware.
+T1F04 002:284.586   RESET (pin 15) high, but should be low. Please check target hardware.
+T1F04 002:545.653   RESET (pin 15) high, but should be low. Please check target hardware.
+T1F04 002:648.925 - 2410.134ms
+T1F04 002:649.027 JLINK_GetId()
+T1F04 002:852.806   RESET (pin 15) high, but should be low. Please check target hardware.
+T1F04 003:156.670   RESET (pin 15) high, but should be low. Please check target hardware.
+T1F04 003:416.046   RESET (pin 15) high, but should be low. Please check target hardware.
+T1F04 003:519.402 - 870.433ms returns 0x00000000
+T1F04 003:519.516 JLINK_GetId()
+T1F04 003:724.006   RESET (pin 15) high, but should be low. Please check target hardware.
+T1F04 004:029.046   RESET (pin 15) high, but should be low. Please check target hardware.
+T1F04 004:289.045   RESET (pin 15) high, but should be low. Please check target hardware.
+T1F04 004:392.449 - 872.995ms returns 0x00000000
+T1F04 004:403.674 JLINK_GetFirmwareString(...)
+T1F04 004:403.696 - 0.025ms
+T1F04 010:924.217 JLINK_Close()
+T1F04 010:935.567 - 11.379ms
+T1F04 010:935.605   
+T1F04 010:935.724   Closed

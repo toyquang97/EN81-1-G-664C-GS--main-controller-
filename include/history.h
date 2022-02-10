@@ -37,7 +37,7 @@ struct Hist										// structure for error history
 	BYTE doorstate;								// actual door state
 	BYTE door_io [MAX_DOOR];						// state of door inputs
 	BYTE load;									// load measurement state
-	BYTE ;									// car light state
+	BYTE carlight;									// car light state
 	BYTE temperature;								// temperature state of motor and machine room
 	BYTE triperrorcount;
 

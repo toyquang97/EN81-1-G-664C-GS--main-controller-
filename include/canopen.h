@@ -1639,7 +1639,7 @@
 #define	EVACUATION_NORMAL		0xA0		// evacuation normal (I)
 #define	DOOR_STOP				0xA1		// door stop push (I)
 #define	UPS_BRAKE				0xA2		// UPS evacuation by just brake opening
-#define	_SWITCH			0xA3
+#define	LIGHT_SWITCH			0xA3
 #define	FAN_SWITCH				0xA4
 #define	ANTI_FAINT_OUTPUT		0xA5
 #define	FIREFLOOR_IND			0xA6

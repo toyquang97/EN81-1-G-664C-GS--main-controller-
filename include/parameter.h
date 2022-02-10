@@ -1029,7 +1029,7 @@ extern BYTE fullload;				// car is full
 extern BYTE zeroload;				// car is empty
 extern BYTE temperature;			// temperature state of motor and machine room
 extern BYTE mrt_state;				// machine room temperature state
-extern BYTE ;				// car light state
+extern BYTE carlight;				// car light state
 extern BYTE term_active;			// terminal mode (lift controlled from pushes)
 extern BYTE doortest_active;		// doortest mode (door controlled from pushes)
 extern BYTE doortest_command;		// doortest command

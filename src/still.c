@@ -8,13 +8,15 @@
 #include "pos.h"
 #include "history.h"
 #include "Nice5000.h"
+#include <limits.h>
 
-DWORD Nudging_timer_count =0-1;
-BYTE  NudingMode =0;
-BYTE  Enabal_opendoor =1;
-BYTE hhhhhhhhh =0,tttttttt =0;
-DWORD Nudging_Buz_timer_count =0-1;
-DWORD Nudging_opendoor_timer_count =0-1;
+BYTE  isNudgingMode = 0;
+BYTE  enableOpenDoor = 1;
+DWORD nudgingTimerCount =UINT_MAX;
+DWORD nudgingTimerBuzCount =UINT_MAX;
+DWORD nudgingTimerOpenDoorCount =UINT_MAX;
+static BYTE callPriorityOld = 0;
+BYTE nudgingTime = 10 SEC;
 
 
 /****************************************************************************************************/
@@ -191,8 +193,7 @@ BYTE handle_dooropenpush (void)
 	
 	BYTE i = 0;
 	static BYTE dooropenpush_old = 0;
-	if(!Enabal_opendoor)
-		return 0;
+
 	dooropenpush &= p.doorpos [level];				/* only use existing shaft doors		*/
 	if (callpriority == C_FIREMAN)					/* lift is in fireman mode				*/
 	{
@@ -931,50 +932,49 @@ void standstill_state (void)
 					carlighttimer = timer + (p.carlighttimer SEC);			/* retrigger timer								*/
 			}
 
-			// sua nudging
-		if(level != p.fire_floor[0])
+		// sua nudging
+		if(callPriorityOld != callpriority)
 		{
-				if(!(callpriority == C_FIREALARM))
-				{
-					NudingMode = 0;
-					Nudging_timer_count = 0-1;
-					Nudging_Buz_timer_count = 0-1;
-				}
-				else
-				{
-					if((Nudging_timer_count == (0-1)) && (door_state[0] != DOOR_CLOSED) )
+			nudgingTimerCount = UINT_MAX;
+			callPriorityOld = callpriority;
+			if(((callpriority == C_FIREALARM) && (level != p.fire_floor[0])) ||((callpriority == C_FIREMAN) && (level != firefloor)))
+			{
+					if((nudgingTimerCount == UINT_MAX) && (door_state[0] != DOOR_CLOSED) )
 					{
-						Nudging_timer_count = timer+ 15 SEC;
+						nudgingTimerCount = timer+ nudgingTime;
 					}
-				}
-				if( timer > Nudging_timer_count  )
-				{
-					//over 2min
-					Nudging_timer_count = 0-1;
-					set_door(ALL_DOORS_CLOSED,CLOSE_DOOR); // close door
-					//out nudging
-					set_out (DOOR_IO, DOOR_REV, 0, EXISTING_DOORS,1 , O_CANA);  
-					set_out (SPEAKER_BUZ, BUZZER_FIRE, 0, EXISTING_DOORS, 1 , O_CANA);   //buzzer on
-					set_out (SPECIAL_FUNC, DOOR_OPEN, 0, EXISTING_DOORS, 0, O_CANA);  //turn off open led
-					set_out (SPECIAL_FUNC, DOOR_CLOSE, 0, EXISTING_DOORS, 1, O_CANA); //turn on open led
-					NudingMode = 1;
-					Enabal_opendoor =0;
-					Nudging_Buz_timer_count = timer +4 SEC;
-				}
-				if( timer > Nudging_Buz_timer_count  )
-				{
-					set_out (SPEAKER_BUZ, BUZZER_FIRE, 0, EXISTING_DOORS, 1 , O_CANA);
-					Nudging_Buz_timer_count = timer +4 SEC;
-				}
+					if(auto_fire)
+					{
+						nudgingTimerCount = UINT_MAX;
+					}
+			}
 		}
-		
-		if(NudingMode)
+		if( timer > nudgingTimerCount)
 		{
-			if(callpriority != C_FIREALARM)
+			//over 2min
+			nudgingTimerCount = UINT_MAX;
+			set_door(ALL_DOORS_CLOSED,CLOSE_DOOR); // close door
+			//out nudging
+			set_out (DOOR_IO, DOOR_REV, 0, EXISTING_DOORS,1 , O_CANA);  
+			set_out (SPEAKER_BUZ, BUZZER_FIRE, 0, EXISTING_DOORS, 1 , O_CANA);   //buzzer on
+			set_out (SPECIAL_FUNC, DOOR_OPEN, 0, EXISTING_DOORS, 0, O_CANA);  //turn off open led
+			set_out (SPECIAL_FUNC, DOOR_CLOSE, 0, EXISTING_DOORS, 1, O_CANA); //turn on open led
+			isNudgingMode = 1;
+			enableOpenDoor =0;
+			nudgingTimerBuzCount = timer +4 SEC;
+		}
+		if( timer > nudgingTimerBuzCount  )
+		{
+			set_out (SPEAKER_BUZ, BUZZER_FIRE, 0, EXISTING_DOORS, 1 , O_CANA);
+			nudgingTimerBuzCount = timer +4 SEC;
+		}
+		if(isNudgingMode)
+		{
+			if((callpriority != C_FIREALARM) && (callpriority != C_FIREMAN)) //C_FIREALARM
 				{
-						Enabal_opendoor =1;
-						Nudging_Buz_timer_count = 0-1;
-						NudingMode = 0;
+						enableOpenDoor =1;
+						nudgingTimerBuzCount = UINT_MAX;
+						isNudgingMode = 0;
 						set_out (DOOR_IO, DOOR_REV, 0, EXISTING_DOORS,0 , O_CANA); 
 						set_out (SPEAKER_BUZ, BUZZER_FIRE, 0, EXISTING_DOORS, 0 , O_CANA); 
 				}
@@ -987,16 +987,15 @@ void standstill_state (void)
 			((ct - timer) <= (doorstaytime_cc SEC)))			/* or open stay time with landing calls over		*/
 				ct = timer + (doorstaytime_cc SEC);			/* Timer for door open stay time with car call	*/
 		}
-		//add
-		if(!Enabal_opendoor)
+		if(!enableOpenDoor)
 		{
-			if(timer > Nudging_opendoor_timer_count)
+			if(timer > nudgingTimerOpenDoorCount)
 				{
-					Nudging_opendoor_timer_count = 0-1;
-					Enabal_opendoor = 1;
+					nudgingTimerOpenDoorCount = UINT_MAX;
+					enableOpenDoor = 1;
 				}
 		}
-		//end
+		//sua nudging
 		handle_doorstoppush ();
 		if ((doorstopstate) || (she_photonsensor) || (she_doorstoppush))
 		{

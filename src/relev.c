@@ -41,7 +41,7 @@ BYTE relevelling (BYTE state, BYTE call)
 				relev_dir = DIR_UP;
 			else if (door_zone & POS_SGD)			/* lift above level zone					*/
 				relev_dir = DIR_DN;
-			start_drive (relev_dir);				/* start drive								*/`
+			start_drive (relev_dir);				/* start drive								*/
 			check_ilu_ild();
 			relevelflag = 1;
 			relevelnumber++;
